@@ -1,0 +1,22 @@
+{
+  "name": "la-bonne-salle-au-bon-moment",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.ts",
+  "scripts": {
+    "start": "node src/app.ts"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.9.4"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.4.1",
+    "typescript": "^7.0.2"
+  }
+}
