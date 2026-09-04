@@ -3,6 +3,7 @@ import Express from "express";
 import { connectDatabase } from "./config/mongo.database.ts";
 import roleRouter from './routes/role.router.ts';
 import userRouter from './routes/user.router.ts';
+import roomRouter from './routes/room.router.ts';
 
 const express = Express;
 const app = express();
@@ -13,6 +14,7 @@ connectDatabase();
 
 app.use('/api/roles', roleRouter);
 app.use('/api/users', userRouter);
+app.use('/api/rooms', roomRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
