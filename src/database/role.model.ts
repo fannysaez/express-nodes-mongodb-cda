@@ -1,11 +1,7 @@
 import { Schema, model, Document } from 'mongoose';
 
-export interface IRole extends Document {
-  libelle: string;
-}
+export interface IRole extends Document { role: string; }
 
-const roleSchema = new Schema<IRole>({
-  libelle: { type: String, required: true },
-});
+const roleSchema = new Schema<IRole>({ role: { type: String, required: true } });
 
 export const RoleModel = model<IRole>('Role', roleSchema);
