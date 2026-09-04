@@ -1,12 +1,17 @@
 import "dotenv/config";
 import Express from "express";
 import { connectDatabase } from "./config/mongo.database.ts";
+import roleRouter from './routes/role.router.ts';
 
 const express = Express;
 const app = express();
 const port = 3000;
 
+app.use(Express.json());
+
 connectDatabase();
+
+app.use('/api/roles', roleRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
