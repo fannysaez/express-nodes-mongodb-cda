@@ -1,13 +1,14 @@
 import { ReservationRepository } from '../repositories/reservation.repository.ts';
+import type { CreateReservationDto, UpdateReservationDto } from '../dto/reservation.dto.ts';
 
 const getAll = () => ReservationRepository.findAll();
 
 const getById = (id: string) => ReservationRepository.findById(id);
 
-const create = (data: { user: string; room: string; dateDebut: Date; dateFin: Date }) =>
+const create = (data: CreateReservationDto) =>
   ReservationRepository.create(data);
 
-const update = (id: string, data: { user?: string; room?: string; dateDebut?: Date; dateFin?: Date }) =>
+const update = (id: string, data: UpdateReservationDto) =>
   ReservationRepository.update(id, data);
 
 const remove = (id: string) => ReservationRepository.remove(id);

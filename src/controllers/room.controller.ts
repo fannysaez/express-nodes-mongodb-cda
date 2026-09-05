@@ -1,5 +1,6 @@
 import type { Request, Response } from 'express';
 import { RoomService } from '../services/room.service.ts';
+import type { CreateRoomDto, UpdateRoomDto } from '../dto/room.dto.ts';
 
 export const getAll = async (req: Request, res: Response) => {
   try {
@@ -22,7 +23,8 @@ export const getById = async (req: Request<{ id: string }>, res: Response) => {
 
 export const create = async (req: Request, res: Response) => {
   try {
-    const room = await RoomService.create(req.body);
+    const body = req.body as CreateRoomDto;
+    const room = await RoomService.create(body);
     res.status(201).json(room);
   } catch (error) {
     res.status(500).json({ message: 'Erreur serveur' });
@@ -31,7 +33,8 @@ export const create = async (req: Request, res: Response) => {
 
 export const update = async (req: Request<{ id: string }>, res: Response) => {
   try {
-    const room = await RoomService.update(req.params.id, req.body);
+    const body = req.body as UpdateRoomDto;
+    const room = await RoomService.update(req.params.id, body);
     if (!room) return res.status(404).json({ message: 'Salle non trouvée' });
     res.json(room);
   } catch (error) {
