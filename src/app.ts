@@ -1,5 +1,6 @@
 import "dotenv/config";
 import Express from "express";
+import cors from "cors";
 import { connectDatabase } from "./config/mongo.database.ts";
 import roleRouter from './routes/role.router.ts';
 import userRouter from './routes/user.router.ts';
@@ -10,6 +11,7 @@ const express = Express;
 const app = express();
 const port = 3000;
 
+app.use(cors({ origin: "http://localhost:5173" }));
 app.use(Express.json());
 connectDatabase();
 
