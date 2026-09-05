@@ -5,4 +5,5 @@
 .env*
 
 seeds/
+repomix/
 repomix-output.xml
