@@ -42,6 +42,16 @@ export const update = async (req: Request<{ id: string }>, res: Response) => {
   }
 };
 
+export const patch = async (req: Request<{ id: string }>, res: Response) => {
+  try {
+    const reservation = await ReservationService.patch(req.params.id, req.body as UpdateReservationDto);
+    if (!reservation) return res.status(404).json({ message: 'Réservation non trouvée' });
+    res.json(reservation);
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
+};
+
 export const remove = async (req: Request<{ id: string }>, res: Response) => {
   try {
     await ReservationService.remove(req.params.id);

@@ -11,6 +11,9 @@ const create = (data: CreateReservationDto) =>
 const update = (id: string, data: UpdateReservationDto) =>
   ReservationModel.findByIdAndUpdate(id, data, { returnDocument: 'after' });
 
+const patch = (id: string, data: UpdateReservationDto) =>
+  ReservationModel.findByIdAndUpdate(id, data, { returnDocument: 'after' });
+
 const remove = (id: string) => ReservationModel.findByIdAndDelete(id);
 
-export const ReservationRepository = { findAll, findById, create, update, remove };
+export const ReservationRepository = { findAll, findById, create, update, patch, remove };

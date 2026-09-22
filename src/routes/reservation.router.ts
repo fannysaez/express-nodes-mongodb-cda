@@ -9,6 +9,7 @@ router.get('/', ReservationController.getAll);
 router.get('/:id', ReservationController.getById);
 router.post('/', validate(createReservationSchema), ReservationController.create);
 router.put('/:id', validate(updateReservationSchema), ReservationController.update);
+router.patch('/:id', ReservationController.patch);
 router.delete('/:id', ReservationController.remove);
 
 export default router;

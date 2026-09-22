@@ -11,6 +11,8 @@ const create = (data: CreateReservationDto) =>
 const update = (id: string, data: UpdateReservationDto) =>
   ReservationRepository.update(id, data);
 
+const patch = (id: string, data: UpdateReservationDto) => ReservationRepository.patch(id, data);
+
 const remove = (id: string) => ReservationRepository.remove(id);
 
-export const ReservationService = { getAll, getById, create, update, remove };
+export const ReservationService = { getAll, getById, create, update, patch, remove };
