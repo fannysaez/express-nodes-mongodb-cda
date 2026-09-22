@@ -1,9 +1,9 @@
 import { UserModel } from '../models/user.model.ts';
 import type { CreateUserDto, UpdateUserDto } from '../dto/user.dto.ts';
 
-const findAll = () => UserModel.find().populate('role');
+const findAll = () => UserModel.find().populate('roleId');  // ← role → roleId
 
-const findById = (id: string) => UserModel.findById(id).populate('role');
+const findById = (id: string) => UserModel.findById(id).populate('roleId');  // ← role → roleId
 
 const create = (data: CreateUserDto) => UserModel.create(data);
 

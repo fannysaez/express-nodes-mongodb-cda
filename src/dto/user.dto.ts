@@ -1,24 +1,24 @@
 export interface CreateUserDto {
-  nom: string;
-  prenom: string;
+  lastname: string;
+  firstname: string;
   email: string;
-  motDePasse: string;
-  role: string;       // ObjectId en string
+  password: string;
+  roleId: string;
 }
 
 export interface UpdateUserDto {
-  nom?: string;
-  prenom?: string;
+  lastname?: string;
+  firstname?: string;
   email?: string;
-  motDePasse?: string;
-  role?: string;
+  password?: string;
+  roleId?: string;
 }
 
 export interface UserDto {
   id: string;
-  nom: string;
-  prenom: string;
+  lastname: string;
+  firstname: string;
   email: string;
-  role: string;
-  // motDePasse absent volontairement — jamais exposé en réponse
+  roleId: string;
+  // password absent volontairement — jamais exposé en réponse
 }
