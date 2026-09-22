@@ -1,15 +1,15 @@
 import { Schema, model, Document } from 'mongoose';
 
 export interface IRoom extends Document {
-  nom: string;
-  capacite: number;
-  equipements: string[];
+  name: string;
+  capacity: number;
+  equipments: string[];
 }
 
 const roomSchema = new Schema<IRoom>({
-  nom: { type: String, required: true },
-  capacite: { type: Number, required: true },
-  equipements: { type: [String], default: [] }
+  name: { type: String, required: true },
+  capacity: { type: Number, required: true },
+  equipments: { type: [String], default: [] }
 });
 
 export const RoomModel = model<IRoom>('Room', roomSchema);

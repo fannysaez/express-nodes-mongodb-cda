@@ -1,12 +1,12 @@
 export interface CreateRoleDto {
-  role: string;       // ton champ s'appelle "role" pas "name"
+  label: string;
 }
 
 export interface UpdateRoleDto {
-  role?: string;
+  label?: string;
 }
 
 export interface RoleDto {
   id: string;
-  role: string;
+  label: string;
 }

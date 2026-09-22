@@ -1,18 +1,18 @@
 export interface CreateRoomDto {
-  nom: string;
-  capacite: number;
-  equipements?: string[];
+  name: string;
+  capacity: number;
+  equipments?: string[];
 }
 
 export interface UpdateRoomDto {
-  nom?: string;
-  capacite?: number;
-  equipements?: string[];
+  name?: string;
+  capacity?: number;
+  equipments?: string[];
 }
 
 export interface RoomDto {
   id: string;
-  nom: string;
-  capacite: number;
-  equipements: string[];
+  name: string;
+  capacity: number;
+  equipments: string[];
 }

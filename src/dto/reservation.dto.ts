@@ -1,21 +1,21 @@
 export interface CreateReservationDto {
-  user: string;
-  room: string;
-  dateDebut: string;
-  dateFin: string;
+  userId: string;
+  roomId: string;
+  startDate: string;
+  endDate: string;
 }
 
 export interface UpdateReservationDto {
-  user?: string;
-  room?: string;
-  dateDebut?: string;
-  dateFin?: string;
+  userId?: string;
+  roomId?: string;
+  startDate?: string;
+  endDate?: string;
 }
 
 export interface ReservationDto {
   id: string;
-  user: string;
-  room: string;
-  dateDebut: string;
-  dateFin: string;
+  userId: string;
+  roomId: string;
+  startDate: string;
+  endDate: string;
 }

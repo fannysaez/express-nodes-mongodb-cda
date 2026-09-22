@@ -1,9 +1,9 @@
 import { ReservationModel } from "../models/reservation.model.ts";
 import type { CreateReservationDto, UpdateReservationDto } from '../dto/reservation.dto.ts';
 
-const findAll = () => ReservationModel.find().populate('user').populate('room');
+const findAll = () => ReservationModel.find().populate('userId').populate('roomId');
 
-const findById = (id: string) => ReservationModel.findById(id).populate('user').populate('room');
+const findById = (id: string) => ReservationModel.findById(id).populate('userId').populate('roomId');
 
 const create = (data: CreateReservationDto) =>
   ReservationModel.create(data);
