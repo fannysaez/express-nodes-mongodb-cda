@@ -10,6 +10,9 @@ const create = (data: CreateUserDto) => UserModel.create(data);
 const update = (id: string, data: UpdateUserDto) =>
   UserModel.findByIdAndUpdate(id, data, { returnDocument: 'after' });
 
+const patch = (id: string, data: UpdateUserDto) =>
+  UserModel.findByIdAndUpdate(id, data, { returnDocument: 'after' });
+
 const remove = (id: string) => UserModel.findByIdAndDelete(id);
 
-export const UserRepository = { findAll, findById, create, update, remove };
+export const UserRepository = { findAll, findById, create, update, patch, remove };

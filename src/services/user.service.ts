@@ -9,6 +9,8 @@ const create = (data: CreateUserDto) => UserRepository.create(data);
 
 const update = (id: string, data: UpdateUserDto) => UserRepository.update(id, data);
 
+const patch = (id: string, data: UpdateUserDto) => UserRepository.patch(id, data);
+
 const remove = (id: string) => UserRepository.remove(id);
 
-export const UserService = { getAll, getById, create, update, remove };
+export const UserService = { getAll, getById, create, update, patch, remove };

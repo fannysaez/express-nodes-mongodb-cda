@@ -42,6 +42,16 @@ export const update = async (req: Request<{ id: string }>, res: Response) => {
   }
 };
 
+export const patch = async (req: Request<{ id: string }>, res: Response) => {
+  try {
+    const user = await UserService.patch(req.params.id, req.body as UpdateUserDto);
+    if (!user) return res.status(404).json({ message: 'Utilisateur non trouvé' });
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
+};
+
 export const remove = async (req: Request<{ id: string }>, res: Response) => {
   try {
     await UserService.remove(req.params.id);
