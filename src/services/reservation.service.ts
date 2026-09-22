@@ -5,11 +5,23 @@ const getAll = () => ReservationRepository.findAll();
 
 const getById = (id: string) => ReservationRepository.findById(id);
 
-const create = (data: CreateReservationDto) =>
-  ReservationRepository.create(data);
+const create = async (data: CreateReservationDto) => {
+  const conflict = await ReservationRepository.findConflict(
+    data.roomId, data.startDate, data.endDate
+  );
+  if (conflict) throw new Error('Cette salle est déjà réservée sur ce créneau');
+  return ReservationRepository.create(data);
+};
 
-const update = (id: string, data: UpdateReservationDto) =>
-  ReservationRepository.update(id, data);
+const update = async (id: string, data: UpdateReservationDto) => {
+  if (data.roomId && data.startDate && data.endDate) {
+    const conflict = await ReservationRepository.findConflict(
+      data.roomId, data.startDate, data.endDate, id
+    );
+    if (conflict) throw new Error('Cette salle est déjà réservée sur ce créneau');
+  }
+  return ReservationRepository.update(id, data);
+};
 
 const patch = (id: string, data: UpdateReservationDto) => ReservationRepository.patch(id, data);
 

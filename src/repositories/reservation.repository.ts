@@ -5,8 +5,7 @@ const findAll = () => ReservationModel.find().populate('userId').populate('roomI
 
 const findById = (id: string) => ReservationModel.findById(id).populate('userId').populate('roomId');
 
-const create = (data: CreateReservationDto) =>
-  ReservationModel.create(data);
+const create = (data: CreateReservationDto) => ReservationModel.create(data);
 
 const update = (id: string, data: UpdateReservationDto) =>
   ReservationModel.findByIdAndUpdate(id, data, { returnDocument: 'after' });
@@ -16,4 +15,12 @@ const patch = (id: string, data: UpdateReservationDto) =>
 
 const remove = (id: string) => ReservationModel.findByIdAndDelete(id);
 
-export const ReservationRepository = { findAll, findById, create, update, patch, remove };
+const findConflict = (roomId: string, startDate: string, endDate: string, excludeId?: string) =>
+  ReservationModel.findOne({
+    roomId,
+    _id: { $ne: excludeId },
+    startDate: { $lt: new Date(endDate) },
+    endDate: { $gt: new Date(startDate) }
+  });
+
+export const ReservationRepository = { findAll, findById, create, update, patch, remove, findConflict };
