@@ -1,15 +1,117 @@
 import { Router } from 'express';
 import * as RoleController from '../controllers/role.controller.ts';
-import validate from '../middlewares/validate.middleware.ts';
-import { createRoleSchema, updateRoleSchema } from '../validators/role.validator.ts';
 
 const router = Router();
 
+/**
+ * @swagger
+ * /roles:
+ *   get:
+ *     summary: Récupérer tous les rôles
+ *     tags: [Roles]
+ *     responses:
+ *       200:
+ *         description: Liste des rôles
+ */
 router.get('/', RoleController.getAll);
+
+/**
+ * @swagger
+ * /roles/{id}:
+ *   get:
+ *     summary: Récupérer un rôle par ID
+ *     tags: [Roles]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Le rôle
+ *       404:
+ *         description: Rôle non trouvé
+ */
 router.get('/:id', RoleController.getById);
-router.post('/', validate(createRoleSchema), RoleController.create);
-router.put('/:id', validate(updateRoleSchema), RoleController.update);
+
+/**
+ * @swagger
+ * /roles:
+ *   post:
+ *     summary: Créer un rôle
+ *     tags: [Roles]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Rôle créé
+ */
+router.post('/', RoleController.create);
+
+/**
+ * @swagger
+ * /roles/{id}:
+ *   put:
+ *     summary: Mettre à jour un rôle (complet)
+ *     tags: [Roles]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Rôle mis à jour
+ *       404:
+ *         description: Rôle non trouvé
+ */
+router.put('/:id', RoleController.update);
+
+/**
+ * @swagger
+ * /roles/{id}:
+ *   patch:
+ *     summary: Mettre à jour un rôle (partiel)
+ *     tags: [Roles]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Rôle mis à jour
+ *       404:
+ *         description: Rôle non trouvé
+ */
 router.patch('/:id', RoleController.patch);
+
+/**
+ * @swagger
+ * /roles/{id}:
+ *   delete:
+ *     summary: Supprimer un rôle
+ *     tags: [Roles]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       204:
+ *         description: Rôle supprimé
+ */
 router.delete('/:id', RoleController.remove);
 
 export default router;
