@@ -42,6 +42,16 @@ export const update = async (req: Request<{ id: string }>, res: Response) => {
   }
 };
 
+export const patch = async (req: Request<{ id: string }>, res: Response) => {
+  try {
+    const room = await RoomService.patch(req.params.id, req.body as UpdateRoomDto);
+    if (!room) return res.status(404).json({ message: 'Salle non trouvée' });
+    res.json(room);
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
+};
+
 export const remove = async (req: Request<{ id: string }>, res: Response) => {
   try {
     await RoomService.remove(req.params.id);

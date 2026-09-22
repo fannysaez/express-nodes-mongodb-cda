@@ -9,6 +9,7 @@ router.get('/', RoomController.getAll);
 router.get('/:id', RoomController.getById);
 router.post('/', validate(createRoomSchema), RoomController.create);
 router.put('/:id', validate(updateRoomSchema), RoomController.update);
+router.patch('/:id', RoomController.patch);
 router.delete('/:id', RoomController.remove);
 
 export default router;

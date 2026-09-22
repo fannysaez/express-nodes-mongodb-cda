@@ -10,6 +10,9 @@ const create = (data: CreateRoomDto) => RoomModel.create(data);
 const update = (id: string, data: UpdateRoomDto) =>
   RoomModel.findByIdAndUpdate(id, data, { returnDocument: 'after' });
 
+const patch = (id: string, data: UpdateRoomDto) =>
+  RoomModel.findByIdAndUpdate(id, data, { returnDocument: 'after' });
+
 const remove = (id: string) => RoomModel.findByIdAndDelete(id);
 
-export const RoomRepository = { findAll, findById, create, update, remove };
+export const RoomRepository = { findAll, findById, create, update, patch, remove };

@@ -9,6 +9,8 @@ const create = (data: CreateRoomDto) => RoomRepository.create(data);
 
 const update = (id: string, data: UpdateRoomDto) => RoomRepository.update(id, data);
 
+const patch = (id: string, data: UpdateRoomDto) => RoomRepository.patch(id, data);
+
 const remove = (id: string) => RoomRepository.remove(id);
 
-export const RoomService = { getAll, getById, create, update, remove };
+export const RoomService = { getAll, getById, create, update, patch, remove };
