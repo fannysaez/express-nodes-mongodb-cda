@@ -42,6 +42,16 @@ export const update = async (req: Request<{ id: string }>, res: Response) => {
   }
 };
 
+export const patch = async (req: Request<{ id: string }>, res: Response) => {
+  try {
+    const role = await RoleService.patch(req.params.id, req.body as UpdateRoleDto);
+    if (!role) return res.status(404).json({ message: 'Rôle non trouvé' });
+    res.json(role);
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
+};
+
 export const remove = async (req: Request<{ id: string }>, res: Response) => {
   try {
     await RoleService.remove(req.params.id);

@@ -9,6 +9,7 @@ router.get('/', RoleController.getAll);
 router.get('/:id', RoleController.getById);
 router.post('/', validate(createRoleSchema), RoleController.create);
 router.put('/:id', validate(updateRoleSchema), RoleController.update);
+router.patch('/:id', RoleController.patch);
 router.delete('/:id', RoleController.remove);
 
 export default router;

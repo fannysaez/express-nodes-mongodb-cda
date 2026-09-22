@@ -9,6 +9,8 @@ const create = (data: CreateRoleDto) => RoleRepository.create(data);
 
 const update = (id: string, data: UpdateRoleDto) => RoleRepository.update(id, data);
 
+const patch = (id: string, data: UpdateRoleDto) => RoleRepository.patch(id, data);
+
 const remove = (id: string) => RoleRepository.remove(id);
 
-export const RoleService = { getAll, getById, create, update, remove };
+export const RoleService = { getAll, getById, create, update, patch, remove };
