@@ -1,10 +1,12 @@
 import "dotenv/config";
 import Express from "express";
 import cors from "cors";
+import cookieParser from 'cookie-parser';
 import type { Request, Response, NextFunction } from "express";
 import { connectDatabase } from "./config/mongo.database.ts";
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './swagger.ts';
+import authRouter from './routes/auth.router.ts';
 import roleRouter from './routes/role.router.ts';
 import userRouter from './routes/user.router.ts';
 import roomRouter from './routes/room.router.ts';
@@ -14,11 +16,13 @@ const express = Express;
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(Express.json());
+app.use(cookieParser());
 
 connectDatabase();
 
+app.use('/api/auth', authRouter);
 app.use('/api/roles', roleRouter);
 app.use('/api/users', userRouter);
 app.use('/api/rooms', roomRouter);
