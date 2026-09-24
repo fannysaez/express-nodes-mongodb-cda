@@ -92,8 +92,8 @@ Avant de commencer, s'assurer d'avoir installé :
 
 ```bash
 # 1. Cloner le dépôt
-git clone https://github.com/fannysaez/express-nodes-mongodb-cda.git
-cd la-bonne-salle-au-bon-moment
+git clone https://github.com/fannysaez/la-bonne-salle-au-bon-moment-backend-cda.git
+cd la-bonne-salle-au-bon-moment-backend-cda
 
 # 2. Installer les dépendances
 npm install
@@ -306,6 +306,8 @@ Générée automatiquement depuis les commentaires JSDoc dans `src/routes/*.ts`.
 
 ##  Connexion front-end ↔ back-end
 
+🔗 Repo front-end : [la-bonne-salle-au-bon-moment-frontend-cda](https://github.com/fannysaez/la-bonne-salle-au-bon-moment-frontend-cda)
+
 Le front-end React ne se connecte **jamais directement à MongoDB**.  
 Il communique uniquement avec l'API back-end via des requêtes HTTP :
 
@@ -397,4 +399,4 @@ develop          ← branche principale de développement
 
 ---
 
-*Mise à jour le 22 Septembre 2026*
+*Mise à jour le 24 Septembre 2026*
