@@ -14,6 +14,18 @@ const router = Router();
  *     responses:
  *       200:
  *         description: Liste des salles
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Room'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get('/', RoomController.getAll);
 
@@ -32,8 +44,22 @@ router.get('/', RoomController.getAll);
  *     responses:
  *       200:
  *         description: La salle
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Room'
  *       404:
  *         description: Salle non trouvée
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get('/:id', RoomController.getById);
 
@@ -48,15 +74,20 @@ router.get('/:id', RoomController.getById);
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               capacity:
- *                 type: number
+ *             $ref: '#/components/schemas/Room'
  *     responses:
  *       201:
  *         description: Salle créée
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Room'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.post('/', validate(createRoomSchema), RoomController.create);
 
@@ -72,11 +103,31 @@ router.post('/', validate(createRoomSchema), RoomController.create);
  *         required: true
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Room'
  *     responses:
  *       200:
  *         description: Salle mise à jour
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Room'
  *       404:
  *         description: Salle non trouvée
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.put('/:id', validate(updateRoomSchema), RoomController.update);
 
@@ -92,11 +143,31 @@ router.put('/:id', validate(updateRoomSchema), RoomController.update);
  *         required: true
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Room'
  *     responses:
  *       200:
  *         description: Salle mise à jour
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Room'
  *       404:
  *         description: Salle non trouvée
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.patch('/:id', RoomController.patch);
 
@@ -115,6 +186,18 @@ router.patch('/:id', RoomController.patch);
  *     responses:
  *       204:
  *         description: Salle supprimée
+ *       404:
+ *         description: Salle non trouvée
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.delete('/:id', RoomController.remove);
 

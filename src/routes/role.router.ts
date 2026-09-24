@@ -12,6 +12,18 @@ const router = Router();
  *     responses:
  *       200:
  *         description: Liste des rôles
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Role'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get('/', RoleController.getAll);
 
@@ -30,8 +42,22 @@ router.get('/', RoleController.getAll);
  *     responses:
  *       200:
  *         description: Le rôle
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Role'
  *       404:
  *         description: Rôle non trouvé
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get('/:id', RoleController.getById);
 
@@ -46,13 +72,20 @@ router.get('/:id', RoleController.getById);
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
+ *             $ref: '#/components/schemas/Role'
  *     responses:
  *       201:
  *         description: Rôle créé
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Role'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.post('/', RoleController.create);
 
@@ -68,11 +101,31 @@ router.post('/', RoleController.create);
  *         required: true
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Role'
  *     responses:
  *       200:
  *         description: Rôle mis à jour
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Role'
  *       404:
  *         description: Rôle non trouvé
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.put('/:id', RoleController.update);
 
@@ -88,11 +141,31 @@ router.put('/:id', RoleController.update);
  *         required: true
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Role'
  *     responses:
  *       200:
  *         description: Rôle mis à jour
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Role'
  *       404:
  *         description: Rôle non trouvé
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.patch('/:id', RoleController.patch);
 
@@ -111,6 +184,18 @@ router.patch('/:id', RoleController.patch);
  *     responses:
  *       204:
  *         description: Rôle supprimé
+ *       404:
+ *         description: Rôle non trouvé
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.delete('/:id', RoleController.remove);
 

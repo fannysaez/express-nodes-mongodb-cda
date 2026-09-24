@@ -12,6 +12,18 @@ const router = Router();
  *     responses:
  *       200:
  *         description: Liste des réservations
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Reservation'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get('/', ReservationController.getAll);
 
@@ -30,8 +42,22 @@ router.get('/', ReservationController.getAll);
  *     responses:
  *       200:
  *         description: La réservation
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Reservation'
  *       404:
  *         description: Réservation non trouvée
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.get('/:id', ReservationController.getById);
 
@@ -46,21 +72,26 @@ router.get('/:id', ReservationController.getById);
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               roomId:
- *                 type: string
- *               userId:
- *                 type: string
- *               startDate:
- *                 type: string
- *               endDate:
- *                 type: string
+ *             $ref: '#/components/schemas/Reservation'
  *     responses:
  *       201:
  *         description: Réservation créée
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Reservation'
  *       409:
  *         description: Créneau déjà réservé
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.post('/', ReservationController.create);
 
@@ -76,13 +107,37 @@ router.post('/', ReservationController.create);
  *         required: true
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Reservation'
  *     responses:
  *       200:
  *         description: Réservation mise à jour
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Reservation'
  *       404:
  *         description: Réservation non trouvée
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  *       409:
  *         description: Créneau déjà réservé
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.put('/:id', ReservationController.update);
 
@@ -98,11 +153,31 @@ router.put('/:id', ReservationController.update);
  *         required: true
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Reservation'
  *     responses:
  *       200:
  *         description: Réservation mise à jour
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Reservation'
  *       404:
  *         description: Réservation non trouvée
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.patch('/:id', ReservationController.patch);
 
@@ -121,6 +196,18 @@ router.patch('/:id', ReservationController.patch);
  *     responses:
  *       204:
  *         description: Réservation supprimée
+ *       404:
+ *         description: Réservation non trouvée
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Erreur serveur
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
  */
 router.delete('/:id', ReservationController.remove);
 
