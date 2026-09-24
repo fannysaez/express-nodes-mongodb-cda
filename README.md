@@ -102,12 +102,39 @@ npm install
 **Dépendances installées :**
 
 ```bash
-# Production
-npm install express mongoose cors dotenv joi swagger-ui-express swagger-jsdoc
+# Dépendances principales
+npm install express mongoose cors dotenv joi
 
-# Développement (types TypeScript)
-npm install -D typescript @types/express @types/node @types/cors @types/swagger-ui-express @types/swagger-jsdoc
+# Documentation API
+npm install swagger-jsdoc swagger-ui-express
+
+# Authentification
+npm install jsonwebtoken bcrypt cookie-parser
+
+# Types TypeScript (dev)
+npm install -D typescript @types/express @types/node @types/cors \
+  @types/swagger-ui-express @types/swagger-jsdoc \
+  @types/jsonwebtoken @types/bcrypt @types/cookie-parser
+
 ```
+
+---
+
+## Pourquoi ces packages ?
+
+| Package | Rôle |
+|---|---|
+| `swagger-jsdoc` | Lit les commentaires JSDoc dans les routes et génère une spec OpenAPI (JSON) |
+| `swagger-ui-express` | Affiche cette spec sous forme d'interface interactive sur `/api-docs` |
+| `jsonwebtoken` | Crée et vérifie les tokens JWT (authentification sans état) |
+| `bcrypt` | Hash les mots de passe de façon irréversible (sécurisé côté base de données) |
+| `cookie-parser` | Permet à Express de lire les cookies HTTP entrants (ex: le cookie httpOnly contenant le JWT) |
+
+### Pourquoi c'est utile ?
+
+- **Swagger** → tu testes l'API directement depuis le navigateur, sans Postman, et tu as une doc toujours à jour
+- **JWT + bcrypt** → l'utilisateur se connecte une fois, reçoit un token, et chaque requête suivante est authentifiée sans retoucher la base de données
+- **cookie-parser + httpOnly** → le token n'est jamais accessible en JavaScript (protection XSS)
 
 ---
 
@@ -386,16 +413,16 @@ develop          ← branche principale de développement
   ├── feature/validation
   ├── feature/patch
   ├── feature/swagger
-  └── feature/auth  ← à venir
+  └── feature/auth
 ```
-
 ---
 
-##  Prochaines étapes
+## Authentification
 
-- [ ] `feature/auth` — Authentification avec bcrypt + JWT
-- [ ] `POST /api/auth/login` — Retourne un token JWT
-- [ ] Middleware `authMiddleware` — Protège les routes sensibles
+- `POST /api/auth/login` — retourne un cookie httpOnly + roleLabel
+- Middleware `authMiddleware` — protège les routes sensibles
+- bcrypt (hash password) + JWT (token signé)
+- cookie httpOnly, sameSite: lax, maxAge: 24h
 
 ---
 
