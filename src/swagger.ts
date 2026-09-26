@@ -20,6 +20,11 @@ const options = {
           in: 'cookie',
           name: 'token',
         },
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
       },
       schemas: {
         Room: {
@@ -65,7 +70,7 @@ const options = {
         },
       },
     },
-    security: [{ cookieAuth: [] }],
+    security: [{ bearerAuth: [] }],
     tags: [
       { name: 'Auth', description: 'Connexion / déconnexion' },
       { name: 'Rooms', description: 'Gestion des salles' },

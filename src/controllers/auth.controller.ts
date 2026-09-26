@@ -12,7 +12,7 @@ export const loginController = async (req: Request, res: Response) => {
       maxAge: 24 * 60 * 60 * 1000,
     });
 
-    res.status(200).json({ user: result.user });
+    res.status(200).json({ user: result.user, token: result.token });
 
   } catch (error: any) {
     res.status(401).json({ message: error.message });
