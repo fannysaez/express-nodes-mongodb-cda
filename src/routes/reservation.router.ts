@@ -189,7 +189,7 @@ router.put('/:id', ReservationController.update);
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.patch('/:id', ReservationController.partialUpdate);
+router.patch('/:id', ReservationController.patch);
 
 /**
  * @swagger
