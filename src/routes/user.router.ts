@@ -9,6 +9,8 @@ const router = Router();
  *   get:
  *     summary: Récupérer tous les utilisateurs
  *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Liste des utilisateurs
@@ -33,6 +35,8 @@ router.get('/', UserController.getAll);
  *   get:
  *     summary: Récupérer un utilisateur par ID
  *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -67,6 +71,8 @@ router.get('/:id', UserController.getById);
  *   post:
  *     summary: Créer un utilisateur
  *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -95,6 +101,8 @@ router.post('/', UserController.create);
  *   put:
  *     summary: Mettre à jour un utilisateur (complet)
  *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -135,6 +143,8 @@ router.put('/:id', UserController.update);
  *   patch:
  *     summary: Mettre à jour un utilisateur (partiel)
  *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -175,6 +185,8 @@ router.patch('/:id', UserController.patch);
  *   delete:
  *     summary: Supprimer un utilisateur
  *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id

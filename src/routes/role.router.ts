@@ -9,6 +9,8 @@ const router = Router();
  *   get:
  *     summary: Récupérer tous les rôles
  *     tags: [Roles]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Liste des rôles
@@ -33,6 +35,8 @@ router.get('/', RoleController.getAll);
  *   get:
  *     summary: Récupérer un rôle par ID
  *     tags: [Roles]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -67,6 +71,8 @@ router.get('/:id', RoleController.getById);
  *   post:
  *     summary: Créer un rôle
  *     tags: [Roles]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -95,6 +101,8 @@ router.post('/', RoleController.create);
  *   put:
  *     summary: Mettre à jour un rôle (complet)
  *     tags: [Roles]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -135,6 +143,8 @@ router.put('/:id', RoleController.update);
  *   patch:
  *     summary: Mettre à jour un rôle (partiel)
  *     tags: [Roles]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -175,6 +185,8 @@ router.patch('/:id', RoleController.patch);
  *   delete:
  *     summary: Supprimer un rôle
  *     tags: [Roles]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id

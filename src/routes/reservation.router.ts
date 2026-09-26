@@ -9,6 +9,8 @@ const router = Router();
  *   get:
  *     summary: Récupérer toutes les réservations
  *     tags: [Reservations]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Liste des réservations
@@ -33,6 +35,8 @@ router.get('/', ReservationController.getAll);
  *   get:
  *     summary: Récupérer une réservation par ID
  *     tags: [Reservations]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -67,6 +71,8 @@ router.get('/:id', ReservationController.getById);
  *   post:
  *     summary: Créer une réservation
  *     tags: [Reservations]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -101,6 +107,8 @@ router.post('/', ReservationController.create);
  *   put:
  *     summary: Mettre à jour une réservation (complet)
  *     tags: [Reservations]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -147,68 +155,8 @@ router.put('/:id', ReservationController.update);
  *   patch:
  *     summary: Mettre à jour une réservation (partiel)
  *     tags: [Reservations]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Reservation'
- *     responses:
- *       200:
- *         description: Réservation mise à jour
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Reservation'
- *       404:
- *         description: Réservation non trouvée
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- *       500:
- *         description: Erreur serveur
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- */
-router.patch('/:id', ReservationController.patch);
-
-/**
- * @swagger
- * /reservations/{id}:
- *   delete:
- *     summary: Supprimer une réservation
- *     tags: [Reservations]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *     responses:
- *       204:
- *         description: Réservation supprimée
- *       404:
- *         description: Réservation non trouvée
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- *       500:
- *         description: Erreur serveur
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error'
- */
-router.delete('/:id', ReservationController.remove);
-
-export default router;
+ *

@@ -11,6 +11,8 @@ const router = Router();
  *   get:
  *     summary: Récupérer toutes les salles
  *     tags: [Rooms]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Liste des salles
@@ -35,6 +37,8 @@ router.get('/', RoomController.getAll);
  *   get:
  *     summary: Récupérer une salle par ID
  *     tags: [Rooms]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -69,6 +73,8 @@ router.get('/:id', RoomController.getById);
  *   post:
  *     summary: Créer une salle
  *     tags: [Rooms]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -97,6 +103,8 @@ router.post('/', validate(createRoomSchema), RoomController.create);
  *   put:
  *     summary: Mettre à jour une salle (complet)
  *     tags: [Rooms]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -137,6 +145,8 @@ router.put('/:id', validate(updateRoomSchema), RoomController.update);
  *   patch:
  *     summary: Mettre à jour une salle (partiel)
  *     tags: [Rooms]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -177,6 +187,8 @@ router.patch('/:id', RoomController.patch);
  *   delete:
  *     summary: Supprimer une salle
  *     tags: [Rooms]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
